@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>The GateKeeper — Sculptural Metal Art</title>
+<meta name="description" content="The GateKeeper — one-off sculptures welded from steel, copper and salvaged scrap. Spiders, machines and mechanical curiosities, born in the workshop and built to outlive us.">
+<link rel="canonical" href="https://thegatekeeper.art/">
+
+<!-- Social preview -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="The GateKeeper — Sculptural Metal Art">
+<meta property="og:description" content="One-off sculptures welded from steel, copper and salvaged scrap.">
+<meta property="og:url" content="https://thegatekeeper.art/">
+<meta property="og:image" content="https://thegatekeeper.art/assets/og.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#14100d">
+
+<!-- Icons -->
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/favicon.svg">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Structured data: helps Google show the workshop as a local/creative business -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "The GateKeeper",
+  "url": "https://thegatekeeper.art/",
+  "description": "One-off sculptural metal art welded from steel, copper and salvaged scrap.",
+  "email": "hello@thegatekeeper.art",
+  "areaServed": "United Kingdom",
+  "knowsAbout": ["metal sculpture", "steampunk art", "scrap metal art", "welding"],
+  "makesOffer": { "@type": "Offer", "name": "Commissioned metal sculpture" }
+}
+</script>
+</head>
+
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="wrap nav__inner">
+    <a class="brand" href="#top">
+      <img src="assets/favicon.svg" alt="" aria-hidden="true">
+      The<span>GateKeeper</span>
+    </a>
+
+    <nav class="nav__links" id="navLinks" aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#about">Workshop</a>
+      <a href="#process">Process</a>
+      <a href="#commission">Commissions</a>
+    </nav>
+
+    <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="section hero">
+    <div class="wrap hero__grid">
+      <div>
+        <p class="eyebrow">Welded in the workshop · Est. by hand</p>
+        <h1 class="hero__title">Scrap metal,<br><em>reborn.</em></h1>
+        <p class="lede">
+          The GateKeeper builds one-off sculptures from steel, copper and whatever the scrapyard
+          surrendered this week — spiders, engines and gentle mechanical monsters. Nothing is cast
+          twice. When a piece leaves the bench, that's the only one there will ever be.
+        </p>
+
+        <ul class="hero__meta">
+          <li>Steel &amp; copper</li>
+          <li>Salvaged parts</li>
+          <li>One-off pieces</li>
+        </ul>
+
+        <div class="hero__cta">
+          <a class="btn btn--solid" href="#work">See the work</a>
+          <a class="btn btn--ghost" href="#commission">Commission a piece</a>
+        </div>
+      </div>
+
+      <figure class="plate hero__plate">
+        <!-- SWAP: replace assets/hero.svg with a photo of the signature piece (4:3) -->
+        <img src="assets/hero.svg" width="1600" height="1200" alt="Placeholder for the signature GateKeeper sculpture">
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ MARQUEE ============ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>Steel</span><span>Copper</span><span>Brass</span><span>Chains</span><span>Gears</span>
+      <span>Spanners</span><span>Forks</span><span>Rivets</span><span>Sparks</span><span>Rust</span>
+      <span>Steel</span><span>Copper</span><span>Brass</span><span>Chains</span><span>Gears</span>
+      <span>Spanners</span><span>Forks</span><span>Rivets</span><span>Sparks</span><span>Rust</span>
+    </div>
+  </div>
+
+  <!-- ============ WORK ============ -->
+  <section class="section" id="work">
+    <div class="wrap">
+      <div class="section__head reveal">
+        <div>
+          <p class="eyebrow">Selected pieces</p>
+          <h2>The collection</h2>
+        </div>
+
+        <div class="filters" role="group" aria-label="Filter work by category">
+          <button class="filter is-active" data-filter="all">All</button>
+          <button class="filter" data-filter="creatures">Creatures</button>
+          <button class="filter" data-filter="machines">Machines</button>
+          <button class="filter" data-filter="curiosities">Curiosities</button>
+        </div>
+      </div>
+
+      <div class="gallery" id="gallery">
+
+        <figure class="piece reveal" data-cat="creatures">
+          <div class="piece__frame">
+            <span class="piece__tag">Steel</span>
+            <img src="assets/gallery-01.svg" alt="Iron Widow — placeholder image" loading="lazy" width="1200" height="900">
+            <div class="piece__zoom" data-lightbox><span>View piece</span></div>
+          </div>
+          <figcaption class="piece__body">
+            <div>
+              <h3>Iron Widow</h3>
+              <p>Nine legs, all of them sharp.</p>
+            </div>
+            <dl><div>Steel · 2024</div></dl>
+          </figcaption>
+        </figure>
+
+        <figure class="piece reveal" data-cat="machines">
+          <div class="piece__frame">
+            <span class="piece__tag">Mixed</span>
+            <img src="assets/gallery-02.svg" alt="The Mincer — placeholder image" loading="lazy" width="1200" height="900">
+            <div class="piece__zoom" data-lightbox><span>View piece</span></div>
+          </div>
+          <figcaption class="piece__body">
+            <div>
+              <h3>The Mincer</h3>
+              <p>Meat grinder, forks, chain. Don't ask.</p>
+            </div>
+            <dl><div>Found parts</div></dl>
+          </figcaption>
+        </figure>
+
+        <figure class="piece reveal" data-cat="machines">
+          <div class="piece__frame">
+            <span class="piece__tag">Kinetic</span>
+            <img src="assets/gallery-03.svg" alt="Loom Raider — placeholder image" loading="lazy" width="1200" height="900">
+            <div class="piece__zoom" data-lightbox><span>View piece</span></div>
+          </div>
+          <figcaption class="piece__body">
+            <div>
+              <h3>Loom Raider</h3>
+              <p>A Victorian loom that decided to become a car.</p>
+            </div>
+            <dl><div>Wheels turn</div></dl>
+          </figcaption>
+        </figure>
+
+        <figure class="piece reveal" data-cat="creatures">
+          <div class="piece__frame">
+            <span class="piece__tag">Copper</span>
+            <img src="assets/gallery-04.svg" alt="Spanner Fish — placeholder image" loading="lazy" width="1200" height="900">
+            <div class="piece__zoom" data-lightbox><span>View piece</span></div>
+          </div>
+          <figcaption class="piece__body">
+            <div>
+              <h3>Spanner Fish</h3>
+              <p>One spanner, one fish, one afternoon.</p>
+            </div>
+            <dl><div>Copper finish</div></dl>
+          </figcaption>
+        </figure>
+
+        <figure class="piece reveal" data-cat="curiosities">
+          <div class="piece__frame">
+            <span class="piece__tag">Signature</span>
+            <img src="assets/gallery-05.svg" alt="The GateKeeper — placeholder image" loading="lazy" width="1200" height="900">
+            <div class="piece__zoom" data-lightbox><span>View piece</span></div>
+          </div>
+          <figcaption class="piece__body">
+            <div>
+              <h3>The GateKeeper</h3>
+              <p>The piece that named the workshop.</p>
+            </div>
+            <dl><div>Steel · Copper</div></dl>
+          </figcaption>
+        </figure>
+
+        <figure class="piece reveal" data-cat="curiosities">
+          <div class="piece__frame">
+            <span class="piece__tag">Textured</span>
+            <img src="assets/gallery-06.svg" alt="Rust and Rivets — placeholder image" loading="lazy" width="1200" height="900">
+            <div class="piece__zoom" data-lightbox><span>View piece</span></div>
+          </div>
+          <figcaption class="piece__body">
+            <div>
+              <h3>Rust &amp; Rivets</h3>
+              <p>Made from a hundred leftovers.</p>
+            </div>
+            <dl><div>Weathered</div></dl>
+          </figcaption>
+        </figure>
+
+        <figure class="piece reveal" data-cat="creatures">
+          <div class="piece__frame">
+            <span class="piece__tag">Small</span>
+            <img src="assets/gallery-07.svg" alt="Gearling — placeholder image" loading="lazy" width="1200" height="900">
+            <div class="piece__zoom" data-lightbox><span>View piece</span></div>
+          </div>
+          <figcaption class="piece__body">
+            <div>
+              <h3>Gearling</h3>
+              <p>Desk-sized, and it glares at you.</p>
+            </div>
+            <dl><div>Gear cluster</div></dl>
+          </figcaption>
+        </figure>
+
+        <figure class="piece reveal" data-cat="curiosities">
+          <div class="piece__frame">
+            <span class="piece__tag">Large</span>
+            <img src="assets/gallery-08.svg" alt="The Gate — placeholder image" loading="lazy" width="1200" height="900">
+            <div class="piece__zoom" data-lightbox><span>View piece</span></div>
+          </div>
+          <figcaption class="piece__body">
+            <div>
+              <h3>The Gate</h3>
+              <p>Half a tonne of scrap with opinions.</p>
+            </div>
+            <dl><div>Outdoor</div></dl>
+          </figcaption>
+        </figure>
+
+        <figure class="piece reveal" data-cat="creatures">
+          <div class="piece__frame">
+            <span class="piece__tag">Copper</span>
+            <img src="assets/gallery-09.svg" alt="Copper Moth — placeholder image" loading="lazy" width="1200" height="900">
+            <div class="piece__zoom" data-lightbox><span>View piece</span></div>
+          </div>
+          <figcaption class="piece__body">
+            <div>
+              <h3>Copper Moth</h3>
+              <p>Wings from a cut watering can. Seriously.</p>
+            </div>
+            <dl><div>Copper · Light</div></dl>
+          </figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="section" id="about">
+    <div class="wrap split">
+      <figure class="plate reveal">
+        <!-- SWAP: a photo of the maker(s) at the bench (4:3) -->
+        <img src="assets/gallery-06.svg" alt="Placeholder for a photo of the maker in the workshop" loading="lazy" width="1200" height="900">
+      </figure>
+
+      <div class="reveal">
+        <p class="eyebrow">The workshop</p>
+        <h2>Built from what was already there</h2>
+        <p class="lede" style="margin-top:1.25rem">
+          The GateKeeper is a one-person workshop with a grinder, a welder and an unreasonable
+          fondness for other people's junk. Machines get taken apart. Spiders get built out of the
+          parts. Nothing is wasted, because nothing here started life as art in the first place.
+        </p>
+
+        <ul class="materials">
+          <li>Steel scrap</li>
+          <li>Copper pipe</li>
+          <li>Brass fittings</li>
+          <li>Chain</li>
+          <li>Gears</li>
+          <li>Cutlery</li>
+          <li>Spanners</li>
+          <li>Salvaged loom parts</li>
+        </ul>
+
+        <p class="lede" style="margin-top:1.75rem">
+          Every piece is welded by hand, finished with heat and patina, and built to be heavy
+          enough that nobody accidentally walks off with it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROCESS ============ -->
+  <section class="section" id="process">
+    <div class="wrap">
+      <div class="section__head reveal">
+        <div>
+          <p class="eyebrow">How a piece happens</p>
+          <h2>From scrapyard to shelf</h2>
+        </div>
+      </div>
+
+      <ol class="steps">
+        <li class="reveal">
+          <div>
+            <h3>Hunt</h3>
+            <p>It starts with a shape that shouldn't work — a grinder, a loom, a box of bent forks.</p>
+          </div>
+        </li>
+        <li class="reveal">
+          <div>
+            <h3>Sketch</h3>
+            <p>Rough lines on scrap paper until the pile of parts agrees with the drawing.</p>
+          </div>
+        </li>
+        <li class="reveal">
+          <div>
+            <h3>Cut &amp; weld</h3>
+            <p>Grinders, sparks, tack welds. The piece gets its skeleton before it gets its manners.</p>
+          </div>
+        </li>
+        <li class="reveal">
+          <div>
+            <h3>Finish</h3>
+            <p>Heat, patina, wax. Copper goes warm, steel goes dark, and the whole thing stops looking like scrap.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ COMMISSION ============ -->
+  <section class="section" id="commission">
+    <div class="wrap contact__grid">
+      <div class="reveal">
+        <p class="eyebrow">Commissions &amp; enquiries</p>
+        <h2>Want something built?</h2>
+        <p class="lede" style="margin-top:1.25rem">
+          Got a pile of parts with sentimental value, or an idea for a creature that doesn't exist
+          yet? Send it over. Include a photo of the parts if you have one, plus roughly how big
+          you'd like the finished piece to be.
+        </p>
+
+        <div class="contact__card" style="margin-top:2rem">
+          <h3>Straight to the bench</h3>
+          <dl>
+            <div>
+              <dt>Email</dt>
+              <dd><a href="mailto:hello@thegatekeeper.art">hello@thegatekeeper.art</a></dd>
+            </div>
+            <div>
+              <dt>Commissions</dt>
+              <dd>Open — typically 3&ndash;6 weeks per piece</dd>
+            </div>
+            <div>
+              <dt>Delivery</dt>
+              <dd>Collection in person preferred · shipping quoted per piece</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <form class="form reveal" id="commissionForm" novalidate>
+        <div class="form__row">
+          <div class="field">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="type">What is it?</label>
+          <select id="type" name="type">
+            <option>A creature</option>
+            <option>A machine</option>
+            <option>A gift / ornament</option>
+            <option>Something from my own parts</option>
+            <option>Not sure yet — let's talk</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="details">The idea</label>
+          <textarea id="details" name="details" placeholder="What it should be, roughly how big, and any parts you already have…" required></textarea>
+        </div>
+
+        <button class="btn btn--solid" type="submit">Send the idea</button>
+        <p class="form__note">
+          Opens your email app with everything filled in. No data is stored on this site.
+        </p>
+        <p class="status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div>
+      <a class="brand" href="#top" style="margin-bottom:0.6rem">
+        <img src="assets/favicon.svg" alt="" aria-hidden="true">
+        The<span>GateKeeper</span>
+      </a>
+      <p>&copy; <span id="year">2026</span> The GateKeeper · One-off sculptural metal art</p>
+    </div>
+
+    <div class="social">
+      <!-- SWAP: point these at the real profiles -->
+      <a href="#" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/>
+        </svg>
+      </a>
+      <a href="mailto:hello@thegatekeeper.art" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Artwork viewer" hidden>
+  <button class="lightbox__close" id="lightboxClose" aria-label="Close viewer">&times;</button>
+  <figure>
+    <img id="lightboxImg" src="" alt="">
+    <figcaption>
+      <strong id="lightboxTitle"></strong>
+      <span id="lightboxMeta"></span>
+    </figcaption>
+  </figure>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
