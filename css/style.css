@@ -341,50 +341,25 @@ h3 { font-size: clamp(1.1rem, 1rem + 0.5vw, 1.35rem); }
 
 @keyframes slide { to { transform: translateX(-50%); } }
 
-/* ---------- 8. Gallery ---------- */
-.section__head {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 1.5rem;
-  margin-bottom: clamp(2rem, 5vw, 3.25rem);
-}
-
-.filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.filter {
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  transition: all 0.25s var(--ease);
-}
-
-.filter:hover { border-color: var(--copper); color: var(--copper-light); }
-
-.filter.is-active {
-  background: linear-gradient(160deg, var(--copper-light), var(--copper));
-  border-color: transparent;
-  color: #1a1209;
-  font-weight: 600;
-}
+/* ---------- 8. Gallery (masonry: mixed orientations stay uncropped) ---------- */
+.section__head .lede { margin-left: auto; }
 
 .gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-  gap: clamp(1rem, 2.5vw, 1.75rem);
+  column-count: 1;
+  column-gap: clamp(1rem, 2.5vw, 1.75rem);
 }
 
+@media (min-width: 700px) { .gallery { column-count: 2; } }
+@media (min-width: 1100px) { .gallery { column-count: 3; } }
+
 .piece {
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  margin-bottom: clamp(1rem, 2.5vw, 1.75rem);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: linear-gradient(180deg, var(--iron-700), var(--iron-800));
@@ -398,23 +373,22 @@ h3 { font-size: clamp(1.1rem, 1rem + 0.5vw, 1.35rem); }
   box-shadow: 0 24px 50px -26px rgba(0, 0, 0, 1);
 }
 
-.piece.is-hidden { display: none; }
-
 .piece__frame { position: relative; overflow: hidden; background: var(--iron-900); }
 
 .piece__frame img {
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
   width: 100%;
+  height: auto;
+  display: block;
   transition: transform 0.7s var(--ease), filter 0.4s;
   filter: saturate(0.94) contrast(1.03);
 }
 
-.piece:hover .piece__frame img { transform: scale(1.045); filter: saturate(1.05) contrast(1.06); }
+.piece:hover .piece__frame img { transform: scale(1.03); filter: saturate(1.05) contrast(1.06); }
 
 .piece__tag {
   position: absolute;
   top: 0.75rem; left: 0.75rem;
+  z-index: 2;
   padding: 0.28rem 0.7rem;
   background: rgba(13, 10, 8, 0.82);
   border: 1px solid var(--line-strong);
@@ -446,6 +420,7 @@ h3 { font-size: clamp(1.1rem, 1rem + 0.5vw, 1.35rem); }
 .piece__zoom {
   position: absolute;
   inset: 0;
+  z-index: 2;
   display: grid;
   place-items: center;
   opacity: 0;
@@ -466,6 +441,45 @@ h3 { font-size: clamp(1.1rem, 1rem + 0.5vw, 1.35rem); }
   padding-bottom: 3px;
 }
 
+/* commission tile that squares off the grid */
+.piece--cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 260px;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  text-align: center;
+  border-style: dashed;
+  border-color: var(--line-strong);
+  background: linear-gradient(160deg, rgba(184, 115, 51, 0.10), var(--iron-800));
+}
+
+.piece--cta:hover { border-color: var(--copper); box-shadow: none; }
+
+.piece--cta .cta__mark {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  line-height: 1;
+  color: var(--copper);
+  margin-bottom: 0.9rem;
+}
+
+.piece--cta h3 { font-size: 1.2rem; margin-bottom: 0.4rem; }
+.piece--cta p { color: var(--text-dim); font-size: 0.92rem; max-width: 26ch; }
+
+.piece--cta .cta__link {
+  margin-top: 1.15rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brass);
+  border-bottom: 1px solid var(--line-strong);
+  padding-bottom: 3px;
+}
+
 /* ---------- 9. About / process ---------- */
 .split {
   display: grid;
@@ -473,6 +487,8 @@ h3 { font-size: clamp(1.1rem, 1rem + 0.5vw, 1.35rem); }
   gap: clamp(2rem, 6vw, 4.5rem);
   align-items: center;
 }
+
+.split--top { align-items: start; }
 
 .materials {
   display: flex;

@@ -60,31 +60,11 @@
     for (var j = 0; j < revealables.length; j++) io.observe(revealables[j]);
   }
 
-  /* ---------- 4. Gallery filter ---------- */
-  var filters = document.querySelectorAll("[data-filter]");
+  /* ---------- 4. Gallery ---------- */
+  /* The filter UI was dropped when the collection went down to 5 pieces.
+     To bring it back: re-add the .filters buttons to index.html and restore the
+     `data-cat` matching block here. `data-cat` is still on every <figure>. */
   var pieces = document.querySelectorAll(".piece");
-
-  filters.forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      var want = btn.dataset.filter;
-
-      filters.forEach(function (b) {
-        b.classList.toggle("is-active", b === btn);
-        b.setAttribute("aria-pressed", String(b === btn));
-      });
-
-      pieces.forEach(function (piece) {
-        var show = want === "all" || piece.dataset.cat === want;
-        piece.classList.toggle("is-hidden", !show);
-        if (show) {
-          /* re-run the reveal animation for freshly shown cards */
-          piece.classList.remove("is-visible");
-          void piece.offsetWidth;
-          piece.classList.add("is-visible");
-        }
-      });
-    });
-  });
 
   /* ---------- 5. Lightbox ---------- */
   var lightbox = document.getElementById("lightbox");

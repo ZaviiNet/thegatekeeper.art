@@ -2,14 +2,14 @@
 
 A single-page site for a one-off sculptural metal art workshop. Plain HTML + CSS + JS,
 no build step, no dependencies. Drop the folder on any static host (Netlify, Cloudflare
-Pages, GitHub Pages, or just upload via FTP to the domain).
+Pages, GitHub Pages, or plain FTP to the domain).
 
 ```
-index.html          the whole page
-css/style.css       all styling (design tokens at the top)
-js/main.js          nav, gallery filter, lightbox, form
-assets/             placeholder graphics — replace these
-tools/make_placeholders.py   regenerates the placeholders if you want more
+index.html      the whole page
+css/style.css   all styling (design tokens at the top)
+js/main.js      nav, lightbox, commission form
+assets/         the five piece photos + favicon
+preview/        headless screenshot of the current build (reference only)
 ```
 
 ## Preview locally
@@ -20,86 +20,93 @@ python3 -m http.server 8080
 # open http://localhost:8080
 ```
 
-## Swapping in the real photos
+## The pieces
 
-Every placeholder is just an `<img>` in `index.html`. Two options:
+| Photo | Piece | Shown as |
+|---|---|---|
+| `assets/stone.jpg` | steel figure carrying a stone | hero **and** gallery |
+| `assets/shark.jpg` | shark built from a pair of grips | gallery |
+| `assets/meat.jpg` | meat grinder with forks and chain | gallery |
+| `assets/bird.jpg` | bird made from a spanner | gallery |
+| `assets/car.jpg` | car built from a loom bobbin | gallery |
 
-**A. Same filename, different content (no HTML edits)**
-Save the photo so it lands on the exact same path, e.g. `assets/hero.svg` → replace with
-`assets/hero.jpg` and update that one `src` attribute. Keeping the filename identical and
-just changing the extension means editing exactly one word per image.
+The gallery is a **masonry layout** (`column-count` in `css/style.css`), so each photo keeps its
+own shape — the two portrait photos are not cropped to match the landscape ones. If you add more
+photos of any orientation, they'll just slot in.
 
-**B. Add a photo folder** — put real images in `assets/photos/` and repoint each `src`:
+### Adding a piece
+
+Copy this block into `<div class="gallery">` in `index.html` and change the four marked values:
 
 ```html
-<img src="assets/photos/iron-widow.jpg" alt="Iron Widow — welded steel spider sculpture" ...>
+<figure class="piece reveal" data-cat="creature">
+  <div class="piece__frame">
+    <span class="piece__tag">Steel</span>
+    <img src="assets/newphoto.jpg" alt="What the sculpture shows, for screen readers" loading="lazy" width="2000" height="1500">
+    <div class="piece__zoom" data-lightbox><span>View piece</span></div>
+  </div>
+  <figcaption class="piece__body">
+    <div>
+      <h3>Piece name</h3>
+      <p>One line about it.</p>
+    </div>
+    <dl><div>Steel</div></dl>
+  </figcaption>
+</figure>
 ```
 
-### What goes where
+Set `width`/`height` to the real pixel size of the photo — it stops the page jumping while images
+load. Multiple photos per piece aren't supported yet.
 
-| Slot | File | Subject | Ratio |
-|---|---|---|---|
-| Hero | `assets/hero.svg` | The signature piece — best-lit, strongest silhouette | 4:3 |
-| 01 | `assets/gallery-01.svg` | Iron Widow (spider) | 4:3 |
-| 02 | `assets/gallery-02.svg` | The Mincer (grinder + forks + chain) | 4:3 |
-| 03 | `assets/gallery-03.svg` | Loom Raider (loom → car) | 4:3 |
-| 04 | `assets/gallery-04.svg` | Spanner Fish | 4:3 |
-| 05 | `assets/gallery-05.svg` | The GateKeeper (name piece) | 4:3 |
-| 06 | `assets/gallery-06.svg` | Rust & Rivets — also reused in the Workshop section for a maker photo | 4:3 |
-| 07 | `assets/gallery-07.svg` | Gearling (small piece) | 4:3 |
-| 08 | `assets/gallery-08.svg` | The Gate (large / outdoor) | 4:3 |
-| 09 | `assets/gallery-09.svg` | Copper Moth (small creature) | 4:3 |
+## Things worth a second pass
 
-Also update `assets/og.svg` (the link preview image shown on Facebook/WhatsApp) — ideally swap
-this for a JPG/PNG at 1200×630 and update the `og:image` URL in `<head>`.
-
-**Shooting tips:** plain dark backdrop, one hard light from the side, shoot slightly below the
-piece so it reads as monumental. Export 1200×900 at ~150–250 KB each.
+- **The handwritten tags are in shot.** `stone.jpg`, `car.jpg`, `shark.jpg` and `bird.jpg` all have
+  a small paper tag visible near the base. They're left in deliberately rather than guessed at —
+  if those tags carry the real titles, tell me what they say and I'll use them instead of the
+  current descriptive names.
+- **Materials are placeholders.** The little caption on each card ("Steel", "Found metal",
+  "Wood & metal") is a best guess from the photo — correct them in `index.html`.
+- **Photo size.** The five photos are 380–560 KB each (~2.4 MB total). Fine for now; if the site
+  needs to be faster, they can be re-exported at 1600px wide / quality 80 to roughly halve that.
+- **No maker photo.** The workshop section is text + an info card rather than a portrait of the
+  maker. Send one over and I'll drop it in.
 
 ## Editing content
 
-- **Titles/descriptions** — each piece is a `<figure class="piece" data-cat="...">` block.
-  `data-cat` must be one of `creatures`, `machines`, `curiosities` to match the filter buttons.
 - **Colours** — everything comes from the `:root` block at the top of `css/style.css`
   (`--copper`, `--brass`, `--iron-*`).
-- **Email address** — appears in `index.html` (contact card + footer + JSON-LD) and as
-  `MAILTO` in `js/main.js`.
-- **Categories** — add a button in `.filters` with a matching `data-filter`, and use the same
-  value in `data-cat` on the pieces.
+- **Email address** — appears in `index.html` (contact card, footer, workshop card, JSON-LD) and
+  as `MAILTO` in `js/main.js`.
+- **Gallery columns** — the three `@media` rules above `.piece` set 1 / 2 / 3 columns.
+- **Filter buttons** — removed while the collection is 5 pieces. The `data-cat` attribute is still
+  on every figure, and `js/main.js` has a comment marking where to restore the filter code.
 
 ## Contact form
 
-By default it composes a `mailto:` link — zero setup, and nothing is stored. If you'd rather
-have it post silently, sign up at Formspree (free tier is fine for a hobby site) and set:
+By default it composes a `mailto:` link — zero setup, nothing stored. To post silently instead,
+sign up at Formspree (free tier is fine) and set:
 
 ```js
-// js/main.js, near the top of section 6
+// js/main.js, section 6
 var FORM_ENDPOINT = "https://formspree.io/f/yourid";
 ```
 
-## Deploying to TheGateKeeper.art
+## Deploying
 
-Any static host works:
+The site is a private repo at <https://github.com/ZaviiNet/thegatekeeper.art>.
 
-- **Netlify / Cloudflare Pages** — drag the folder onto their dashboard, point the domain's
-  nameservers or add the CNAME they give you.
-- **Existing hosting / cPanel** — upload the contents of this folder into `public_html`.
-- **GitHub Pages** — push the folder to a repo, enable Pages on the branch root, add the
-  custom domain in settings.
+> **GitHub Pages won't serve a private repo on a Free plan** — it needs Pro/Team/Enterprise.
+> Two free options: make the repo public and enable Pages, or connect the private repo to
+> Cloudflare Pages / Netlify (both auto-deploy on push and handle the custom domain).
 
-The DNS record should point `thegatekeeper.art` at the host; `www` usually gets a CNAME to the
-same place plus a redirect rule.
-
-## Preview screenshots
-
-`preview/preview-full.png` and `preview/preview-top.png` are headless renders of the current
-build (placeholders still in place) — handy as a "before" reference. Delete the folder once the
-real photos are in.
+Whichever host you pick: point `thegatekeeper.art` at it (the host gives you either nameservers or
+a CNAME target), and give `www` a CNAME to the same place plus a redirect to the bare domain.
+For GitHub Pages specifically, add a file named `CNAME` at the repo root containing
+`thegatekeeper.art`.
 
 ## Accessibility & performance notes
 
 - Alt text on every image — rewrite these to describe the actual sculpture.
 - Lightbox is keyboard-accessible (Esc closes, focus returns to where you were).
 - Honours `prefers-reduced-motion`.
-- No JS frameworks, one stylesheet, system-font fallbacks — the whole page is ~40 KB of code
-  plus images.
+- No frameworks, one stylesheet, system-font fallbacks — about 40 KB of code plus photos.
